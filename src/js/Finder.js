@@ -1,4 +1,5 @@
 import React from "react";
+git;
 import "../scss/Finder.scss";
 
 function Finder() {
