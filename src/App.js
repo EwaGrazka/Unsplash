@@ -1,10 +1,13 @@
 import MainPage from "./js/MainPage";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MainPage />
+        <BrowserRouter>
+          <MainPage />
+        </BrowserRouter>
       </header>
     </div>
   );
