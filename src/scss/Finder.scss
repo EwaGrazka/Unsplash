@@ -22,17 +22,35 @@
 }
 
 .photosWrapper {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  /* use font-size 0 to remove the 4px spacing naturally caused by display:inline-block on the children    */
-  font-size: 0;
-  figure {
-    display: inline-block;
-    max-width: 25%;
-    width: 100%;
-    img {
-      max-width: 100%;
-    }
+  width: 70vw;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  top: 500px;
+  left: 20px;
+}
+.photos {
+  columns: 1;
+  column-gap: 10px;
+}
+.photoWrapper {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .photos {
+    columns: 2;
   }
+}
+@media only screen and (min-width: 1024px) {
+  .photos {
+    columns: 3;
+  }
+}
+.photoWrapper,
+.photo {
+  border-radius: 4px;
+  overflow: hidden;
+  width: 20vw;
 }
