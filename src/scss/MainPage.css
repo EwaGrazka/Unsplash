@@ -16,20 +16,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .titleWrapper {
-    width: 300px;
+}
+
+.mainWrapper .titleWrapper {
+  width: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainWrapper .titleWrapper {
+    width: 400px;
   }
-  @media only screen and (min-width: 768px) {
-    .titleWrapper {
-      width: 400px;
-    }
-  }
-  h5 {
-    width: 300px;
-  }
-  @media only screen and (min-width: 768px) {
-    h5 {
-      width: 400px;
-    }
+}
+
+.mainWrapper h5 {
+  width: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainWrapper h5 {
+    width: 400px;
   }
 }
