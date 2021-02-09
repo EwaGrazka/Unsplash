@@ -1,0 +1,27 @@
+.optionsWrapper {
+  width: 400px;
+  max-height: 150px;
+  border: 1px solid #76767696;
+  border-top: none;
+  list-style: none;
+  margin-top: 0;
+  overflow: auto;
+  line-height: 1.2;
+  position: absolute;
+  top: 84px;
+  left: 0;
+}
+
+li {
+  padding: 10px;
+  background-color: #fff;
+  color: #767676;
+}
+
+.option-active,
+li:hover {
+  color: #000000;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: #fff;
+}
