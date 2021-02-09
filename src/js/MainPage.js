@@ -1,7 +1,6 @@
 import React from "react";
 import Finder from "./Finder";
 import "../scss/MainPage.scss";
-import Result from "./Result";
 
 function MainPage(props) {
   return (

@@ -35,5 +35,6 @@
 @media only screen and (min-width: 768px) {
   .mainWrapper h5 {
     width: 400px;
+    margin-top: 20px;
   }
 }
