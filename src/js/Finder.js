@@ -16,6 +16,10 @@ class Finder extends Component {
   componentDidMount() {
     this.setState({
       words: this.words,
+      activeOption: 0,
+      showOptions: false,
+      inputValue: "",
+      filteredOptions: [],
     });
   }
 
@@ -26,8 +30,12 @@ class Finder extends Component {
       showOptions: true,
       inputValue: e.currentTarget.value,
       filteredOptions: this.state.words.filter((option) =>
-        this.state.inputValue.length >= 2
-          ? option.toLowerCase().includes(this.state.inputValue.toLowerCase())
+        this.state.inputValue.length === 3
+          ? option.charAt(0) === this.state.inputValue.charAt(0) &&
+            option.charAt(1) === this.state.inputValue.charAt(1) &&
+            option.charAt(2) === this.state.inputValue.charAt(2)
+            ? option
+            : null
           : null
       ),
     });
@@ -86,7 +94,7 @@ class Finder extends Component {
               onChange={this.handleChange}
               onKeyDown={this.onKeyDown}
               value={inputValue}
-              placeholder="Name..."
+              placeholder="Search free high resolution photos"
             />
           </div>
           {showOptions && inputValue ? (
@@ -105,9 +113,11 @@ class Finder extends Component {
               </ul>
             ) : (
               <ul className="optionsWrapper">
-                <li className="option-active">
-                  None of your searches match the results. Please, try again.
-                </li>
+                {this.state.inputValue.length > 3 ? (
+                  <li className="option-active">
+                    None of your searches match the results. Please, try again.
+                  </li>
+                ) : null}
               </ul>
             )
           ) : null}
