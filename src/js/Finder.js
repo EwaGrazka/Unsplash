@@ -9,20 +9,18 @@ class Finder extends Component {
     filteredOptions: [],
     showOptions: false,
     options: [],
+    words: [],
   };
+  words = require("an-array-of-english-words");
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          const users = result.map((user) => user.name);
-          this.setState({ options: users });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.setState({
+      words: this.words,
+      activeOption: 0,
+      showOptions: false,
+      inputValue: "",
+      filteredOptions: [],
+    });
   }
 
   handleChange = (e) => {
@@ -31,8 +29,14 @@ class Finder extends Component {
       activeOption: 0,
       showOptions: true,
       inputValue: e.currentTarget.value,
-      filteredOptions: this.state.options.filter((option) =>
-        option.toLowerCase().includes(this.state.inputValue.toLowerCase())
+      filteredOptions: this.state.words.filter((option) =>
+        this.state.inputValue.length === 3
+          ? option.charAt(0) === this.state.inputValue.charAt(0) &&
+            option.charAt(1) === this.state.inputValue.charAt(1) &&
+            option.charAt(2) === this.state.inputValue.charAt(2)
+            ? option
+            : null
+          : null
       ),
     });
   };
@@ -90,7 +94,7 @@ class Finder extends Component {
               onChange={this.handleChange}
               onKeyDown={this.onKeyDown}
               value={inputValue}
-              placeholder="Name..."
+              placeholder="Search free high resolution photos"
             />
           </div>
           {showOptions && inputValue ? (
@@ -109,9 +113,11 @@ class Finder extends Component {
               </ul>
             ) : (
               <ul className="optionsWrapper">
-                <li className="option-active">
-                  None of your searches match the results. Please, try again.
-                </li>
+                {this.state.inputValue.length > 3 ? (
+                  <li className="option-active">
+                    None of your searches match the results. Please, try again.
+                  </li>
+                ) : null}
               </ul>
             )
           ) : null}

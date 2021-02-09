@@ -12,7 +12,6 @@ function Result(props) {
   const [paginatedPhotos, setPaginatedPhotos] = useState(null);
   const [newSearch, setNewSearch] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [keyWords, setKeyWords] = useState(null);
 
   useEffect(() => {
     if (props.resultsPhotos) {
@@ -27,13 +26,6 @@ function Result(props) {
   const handleCloseModal = () => {
     setModal(false);
   };
-
-  // setKeyWords((state) => ({
-  //   ...keyWords,
-  //   if(paginatedPhotos) {
-  //     paginatedPhotos.map((alt) => alt.alt_description);
-  //   },
-  // }));
 
   const handleMoreImages = () => {
     fetch(
@@ -63,6 +55,7 @@ function Result(props) {
         }
       );
   };
+
   return (
     <div className="resultWrapper">
       <div className="finderWrapper">
