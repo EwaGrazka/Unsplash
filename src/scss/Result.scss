@@ -5,7 +5,18 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  .finderWrapper {
+  .pagination {
+    display: flex;
+    justify-content: center;
+
+    width: 80vw;
+    li {
+      margin: 10px;
+      a {
+        color: black;
+        cursor: pointer;
+      }
+    }
   }
   .photosWrapper {
     width: 70vw;

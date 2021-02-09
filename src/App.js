@@ -8,11 +8,12 @@ function App(props) {
   const [results, setResults] = useState(null);
   const [photo, setPhoto] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [totalResults, setTotalResults] = useState(0);
   const history = useHistory();
 
   const handleResults = (props) => {
     fetch(
-      "https://api.unsplash.com/search/photos?page=5&per_page=20&query=" +
+      "https://api.unsplash.com/search/photos?page=1&per_page=30&query=" +
         photo +
         "&client_id=" +
         "jDbtQg1MmInd9TCKgJBQDwREA4fpVrRKhomN4ekVhBs",
@@ -27,15 +28,10 @@ function App(props) {
       .then((res) => res.json())
       .then(
         (result) => {
-          // setIsLoaded(true);
-          // setItems(result);
-          console.log(result, "result");
           setResults(result.results);
+          setTotalResults(result.total);
         },
-
         (error) => {
-          // setIsLoaded(true);
-          // setError(error);
           console.log(error, "errors");
         }
       );
@@ -69,6 +65,8 @@ function App(props) {
               resultsPhotos={results}
               change={handleChange}
               results={handleResults}
+              totalResults={totalResults}
+              query={photo}
             />
           )}
         />

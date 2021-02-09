@@ -7,6 +7,21 @@
   margin: 0 auto;
 }
 
+.resultWrapper .pagination {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+}
+
+.resultWrapper .pagination li {
+  margin: 10px;
+}
+
+.resultWrapper .pagination li a {
+  color: black;
+  cursor: pointer;
+}
+
 .resultWrapper .photosWrapper {
   width: 70vw;
   margin-right: auto;
