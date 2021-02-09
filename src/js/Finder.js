@@ -9,20 +9,14 @@ class Finder extends Component {
     filteredOptions: [],
     showOptions: false,
     options: [],
+    words: [],
   };
+  words = require("an-array-of-english-words");
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          const users = result.map((user) => user.name);
-          this.setState({ options: users });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.setState({
+      words: this.words,
+    });
   }
 
   handleChange = (e) => {
@@ -31,8 +25,10 @@ class Finder extends Component {
       activeOption: 0,
       showOptions: true,
       inputValue: e.currentTarget.value,
-      filteredOptions: this.state.options.filter((option) =>
-        option.toLowerCase().includes(this.state.inputValue.toLowerCase())
+      filteredOptions: this.state.words.filter((option) =>
+        this.state.inputValue.length >= 2
+          ? option.toLowerCase().includes(this.state.inputValue.toLowerCase())
+          : null
       ),
     });
   };
